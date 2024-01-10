@@ -2944,9 +2944,10 @@ var requiredItemOpen = false;
                                 item.image +
                                 '" alt="' +
                                 item.name +
-                                '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
+                                '" /></div><div class="z-hotbar-item-slot-amount-name"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
+                                "</p></div>"
+                            );
                     } else {
                         $(".z-hotbar-inventory")
                             .find("[data-zhotbarslot=" + item.slot + "]")
@@ -2957,11 +2958,11 @@ var requiredItemOpen = false;
                                 item.image +
                                 '" alt="' +
                                 item.name +
-                                '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
+                                '" /></div><div class="z-hotbar-item-slot-amount-name"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
+                                "</p></div>"
+                            );
                     }
-                    Inventory.QualityCheck(item, true, false);
                 }
             });
             $(".z-hotbar-inventory").fadeIn(150);
