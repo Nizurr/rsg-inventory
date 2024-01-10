@@ -619,12 +619,14 @@ CreateThread(function()
         DisableControlAction(0, RSGCore.Shared.Keybinds['4'])
         DisableControlAction(0, RSGCore.Shared.Keybinds['5'])
         DisableControlAction(0, RSGCore.Shared.Keybinds['L'])
+        if IsInputDisabled(0) then
         if not PlayerData.metadata["isdead"] and not PlayerData.metadata["ishandcuffed"] then
-            if IsInputDisabled(0) then
                 if IsDisabledControlJustPressed(0, RSGCore.Shared.Keybinds['L']) then -- L  Hotbar
+                    print("HOTBAR ENABLED OR DISABLED")
                     isHotbar = not isHotbar
                     ToggleHotbar(isHotbar)
-                elseif IsDisabledControlPressed(0, RSGCore.Shared.Keybinds['1']) then  -- 1  slot
+                else
+                    if IsDisabledControlPressed(0, RSGCore.Shared.Keybinds['1']) then  -- 1  slot
                         TriggerServerEvent("inventory:server:UseItemSlot", 1)
                         refreshHotBar(isHotbar)
                     elseif IsDisabledControlPressed(0, RSGCore.Shared.Keybinds['2']) then  -- 2 slot
@@ -640,7 +642,9 @@ CreateThread(function()
                         TriggerServerEvent("inventory:server:UseItemSlot", 5)
                         refreshHotBar(isHotbar)
                     end
+                end
             end
         end
     end 
 end)
+
