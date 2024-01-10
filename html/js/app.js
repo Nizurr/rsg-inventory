@@ -2946,12 +2946,7 @@ var requiredItemOpen = false;
                                 item.name +
                                 '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p>' +
-                                " " +
-                                ((item.weight * item.amount) / 1000).toFixed(1) +
-                                "</p></div>" +
-                                ItemLabel
-                            );
+                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
                     } else {
                         $(".z-hotbar-inventory")
                             .find("[data-zhotbarslot=" + item.slot + "]")
@@ -2964,12 +2959,7 @@ var requiredItemOpen = false;
                                 item.name +
                                 '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p>' +
-                                " " +
-                                ((item.weight * item.amount) / 1000).toFixed(1) +
-                                "</p></div>" +
-                                ItemLabel
-                            );
+                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
                     }
                     Inventory.QualityCheck(item, true, false);
                 }
@@ -3010,6 +3000,7 @@ var requiredItemOpen = false;
         if (data.type == "add") {
           type = "Received";
         } else if (data.type == "remove") {
+            return
           type = "Removed";
         }
 
