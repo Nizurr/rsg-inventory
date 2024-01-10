@@ -281,7 +281,7 @@ function FormatAttachmentInfo(data) {
             if (data.WeaponData.ammotype == "AMMO_RIFLE") {
                 AmmoLabel = "7.62";
             } else if (data.WeaponData.ammotype == "AMMO_SHOTGUN") {
-                AmmoLabel = "12 Gauge";
+                AmmoLabel = "Calibre 12";
             }
             if (ClickedItemData.info.quality !== undefined) {
                 Durability = ClickedItemData.info.quality;
@@ -294,7 +294,7 @@ function FormatAttachmentInfo(data) {
                 data.WeaponData.description
             );
             $(".weapon-attachments-container-details").html(
-                '<span style="font-weight: bold; letter-spacing: .1vh;">Serial</span><br> ' +
+                '<span style="font-weight: bold; letter-spacing: .1vh;">Série</span><br> ' +
                 ClickedItemData.info.serie +
                 '<br><br><span style="font-weight: bold; letter-spacing: .1vh;">Durability - ' +
                 Durability.toFixed() +
@@ -312,7 +312,7 @@ function FormatAttachmentInfo(data) {
             if (data.AttachmentData !== null && data.AttachmentData !== undefined) {
                 if (data.AttachmentData.length > 0) {
                     $(".weapon-attachments-title").html(
-                        '<span style="font-weight: bold; letter-spacing: .1vh;">Attachments</span>'
+                        '<span style="font-weight: bold; letter-spacing: .1vh;">Attaches</span>'
                     );
                     $.each(data.AttachmentData, function(i, attachment) {
                         var WeaponType = data.WeaponData.ammotype
@@ -438,7 +438,7 @@ $(document).on("click", "#weapon-attachments", function(e) {
         $.post(
             "https://rsg-inventory/Notify",
             JSON.stringify({
-                message: "Attachments are unavailable for this gun.",
+                message: "Les attaches ne sont pas disponibles pour cette arme.",
                 type: "error",
             })
         );
@@ -458,35 +458,35 @@ function FormatItemInfo(itemData, dom) {
 
     if (itemData != null && itemData.info != "") {
         if (itemData.name == "id_card") {
-            var gender = "Man";
+            var gender = "Homme";
             if (itemData.info.gender == 1) {
-                gender = "Woman";
+                gender = "Femme";
             }
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
                 "<p><strong>CSN: </strong><span>" +
                 itemData.info.citizenid +
-                "</span></p><p><strong>First Name: </strong><span>" +
+                "</span></p><p><strong>Prénom: </strong><span>" +
                 itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
+                "</span></p><p><strong>Nom: </strong><span>" +
                 itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
+                "</span></p><p><strong>Date de naissance: </strong><span>" +
                 itemData.info.birthdate +
-                "</span></p><p><strong>Gender: </strong><span>" +
+                "</span></p><p><strong>Genre: </strong><span>" +
                 gender +
-                "</span></p><p><strong>Nationality: </strong><span>" +
+                "</span></p><p><strong>Nationnalité: </strong><span>" +
                 itemData.info.nationality +
-                "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                "</span></p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
 
             );
         } else if (itemData.name == "driver_license") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
+                "<p><strong>Prénom: </strong><span>" +
                 itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
+                "</span></p><p><strong>Nom: </strong><span>" +
                 itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
+                "</span></p><p><strong>Date de naissance: </strong><span>" +
                 itemData.info.birthdate +
                 "</span></p><p><strong>Licenses: </strong><span>" +
                 itemData.info.type +
@@ -495,11 +495,11 @@ function FormatItemInfo(itemData, dom) {
         } else if (itemData.name == "weaponlicense") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
+                "<p><strong>Prénom: </strong><span>" +
                 itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
+                "</span></p><p><strong>Nom: </strong><span>" +
                 itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
+                "</span></p><p><strong>Date de naissance: </strong><span>" +
                 itemData.info.birthdate +
                 "</span></p>"
             );
@@ -508,9 +508,9 @@ function FormatItemInfo(itemData, dom) {
             $(".item-info-description").html(
                 "<p><strong>Pass-ID: </strong><span>" +
                 itemData.info.id +
-                "</span></p><p><strong>First Name: </strong><span>" +
+                "</span></p><p><strong>Prénom: </strong><span>" +
                 itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
+                "</span></p><p><strong>Nom: </strong><span>" +
                 itemData.info.lastname +
                 "</span></p><p><strong>CSN: </strong><span>" +
                 itemData.info.citizenid +
@@ -538,15 +538,15 @@ function FormatItemInfo(itemData, dom) {
                     }
                 });
                 $(".item-info-description").html(
-                    "<p><strong>Serial: </strong><span>" +
+                    "<p><strong>Série: </strong><span>" +
                     itemData.info.serie +
-                    "</span></p><p><strong>Attachments: </strong><span>" +
+                    "</span></p><p><strong>Attaches: </strong><span>" +
                     attachmentString +
                     "</span></p>"
                 );
             } else {
                 $(".item-info-description").html(
-                    "<p><strong>Serial: </strong><span>" +
+                    "<p><strong>Série: </strong><span>" +
                     itemData.info.serie +
                     "</span></p><p>" +
                     itemData.description +
@@ -557,15 +557,15 @@ function FormatItemInfo(itemData, dom) {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             if (itemData.info.type == "casing") {
                 $(".item-info-description").html(
-                    "<p><strong>Evidence material: </strong><span>" +
+                    "<p><strong>Matériel de preuve: </strong><span>" +
                     itemData.info.label +
                     "</span></p><p><strong>Type number: </strong><span>" +
                     itemData.info.ammotype +
-                    "</span></p><p><strong>Caliber: </strong><span>" +
+                    "</span></p><p><strong>Calibre: </strong><span>" +
                     itemData.info.ammolabel +
-                    "</span></p><p><strong>Serial: </strong><span>" +
+                    "</span></p><p><strong>Série: </strong><span>" +
                     itemData.info.serie +
-                    "</span></p><p><strong>Crime scene: </strong><span>" +
+                    "</span></p><p><strong>Scene de crime: </strong><span>" +
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
@@ -573,39 +573,39 @@ function FormatItemInfo(itemData, dom) {
                 );
             } else if (itemData.info.type == "blood") {
                 $(".item-info-description").html(
-                    "<p><strong>Evidence material: </strong><span>" +
+                    "<p><strong>Matériel de preuve: </strong><span>" +
                     itemData.info.label +
                     "</span></p><p><strong>Blood type: </strong><span>" +
                     itemData.info.bloodtype +
-                    "</span></p><p><strong>DNA Code: </strong><span>" +
+                    "</span></p><p><strong>Code ADN: </strong><span>" +
                     itemData.info.dnalabel +
-                    "</span></p><p><strong>Crime scene: </strong><span>" +
+                    "</span></p><p><strong>Scene de crime: </strong><span>" +
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             } else if (itemData.info.type == "fingerprint") {
                 $(".item-info-description").html(
-                    "<p><strong>Evidence material: </strong><span>" +
+                    "<p><strong>Matériel de preuve: </strong><span>" +
                     itemData.info.label +
-                    "</span></p><p><strong>Fingerprint: </strong><span>" +
+                    "</span></p><p><strong>Empreinte: </strong><span>" +
                     itemData.info.fingerprint +
-                    "</span></p><p><strong>Crime Scene: </strong><span>" +
+                    "</span></p><p><strong>Scene de crime: </strong><span>" +
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             } else if (itemData.info.type == "dna") {
                 $(".item-info-description").html(
-                    "<p><strong>Evidence material: </strong><span>" +
+                    "<p><strong>Matériel de preuve: </strong><span>" +
                     itemData.info.label +
-                    "</span></p><p><strong>DNA Code: </strong><span>" +
+                    "</span></p><p><strong>Code ADN: </strong><span>" +
                     itemData.info.dnalabel +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             }
         } else if (
@@ -613,40 +613,40 @@ function FormatItemInfo(itemData, dom) {
             itemData.info.costs != null
         ) {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>" + itemData.info.costs + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-description").html("<p>" + itemData.info.costs + "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         } else if (itemData.name == "stickynote") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>" + itemData.info.label + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-description").html("<p>" + itemData.info.label + "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         } else if (itemData.name == "moneybag") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
-                "<p><strong>Amount of cash: </strong><span>$" +
+                "<p><strong>Quantité de cash: </strong><span>$" +
                 itemData.info.cash +
-                "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                "</span></p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
             );
         } else if (itemData.name == "markedbills") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
-                "<p><strong>Worth: </strong><span>$" +
+                "<p><strong>Valeur: </strong><span>$" +
                 itemData.info.worth +
-                "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                "</span></p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
             );
         } else if (itemData.name == "visa" || itemData.name == "mastercard") {
             $(".item-info-title").html('<p>'+itemData.label+'</p>')
             var str = ""+ itemData.info.cardNumber + "";
             var res = str.slice(12);
             var cardNumber = "************" + res;
-            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p><p style=\"font-size:11px\"><b>Weight: </b>' + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-description").html('<p><strong>Porte carte: </strong><span>' + itemData.info.name + '</span></p><p><strong>Numéro identifiant: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Numéro de carte: </strong><span>' + cardNumber + '</span></p><p style=\"font-size:11px\"><b>Poids: </b>' + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         } else if (itemData.name == "labkey") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         } else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         }
     } else {
         $(".item-info-title").html("<p>" + itemData.label + "</p>");
-        $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+        $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Poids: </b>" + itemData.weight + " | <b>Montant: </b> " + itemData.amount + " | <b>Qualité: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
     }
 }
 
@@ -1551,7 +1551,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             qualityLabel = newData.info.quality;
                         }
                         if (newData.info.quality == 0) {
-                            qualityLabel = "BROKEN";
+                            qualityLabel = "DÉTRUIT";
                         }
                         $toInv
                             .find("[data-slot=" + $toSlot + "]")
@@ -1689,7 +1689,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                                 qualityLabel = newDataFrom.info.quality;
                             }
                             if (newDataFrom.info.quality == 0) {
-                                qualityLabel = "BROKEN";
+                                qualityLabel = "DÉTRUIT";
                             }
                             $fromInv
                                 .find("[data-slot=" + $fromSlot + "]")
@@ -1731,7 +1731,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                         JSON.stringify({ item: toData.combinable.reward }),
                         function(item) {
                             $(".combine-option-text").html(
-                                "<p>If you combine these items you get: <b>" +
+                                "<p>Si vous combinez ces éléments, vous obtenez: <b>" +
                                 item.label +
                                 "</b></p>"
                             );
@@ -1841,7 +1841,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             qualityLabel = fromData.info.quality;
                         }
                         if (fromData.info.quality == 0) {
-                            qualityLabel = "BROKEN";
+                            qualityLabel = "DÉTRUIT";
                         }
                         $toInv
                             .find("[data-slot=" + $toSlot + "]")
@@ -1950,7 +1950,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                                 qualityLabel = toData.info.quality;
                             }
                             if (toData.info.quality == 0) {
-                                qualityLabel = "BROKEN";
+                                qualityLabel = "DÉTRUIT";
                             }
                             $fromInv
                                 .find("[data-slot=" + $fromSlot + "]")
@@ -2346,7 +2346,7 @@ var requiredItemOpen = false;
     Inventory.slots = 40;
 
     Inventory.dropslots = 32;
-    Inventory.droplabel = "Drop";
+    Inventory.droplabel = "Jeter";
     Inventory.dropmaxweight = 100000;
 
     Inventory.Error = function() {
@@ -2689,7 +2689,7 @@ var requiredItemOpen = false;
             // '<i class="fas fa-dumbbell"></i> ' +
             (totalWeight / 1000).toFixed(2) +
             "/" +
-            (data.maxweight / 1000).toFixed(2)
+            (data.maxweight / 1000).toFixed(2) + " Kg"
         );
         playerMaxWeight = data.maxweight;
         if (data.other != null) {
@@ -2718,11 +2718,11 @@ var requiredItemOpen = false;
                 // '<i class="fas fa-dumbbell"></i> ' +
                 (totalWeightOther / 1000).toFixed(2) +
                 "/" +
-                (Inventory.dropmaxweight / 1000).toFixed(2)
+                (Inventory.dropmaxweight / 1000).toFixed(2) + " Kg"
             );
             otherMaxWeight = Inventory.dropmaxweight;
             otherLabel = Inventory.droplabel;
-            var per1 =(totalWeightOther/1000)/(otherMaxWeight/100000)
+            var per1 =(totalWeightOther/1000)/(otherMaxWeight/100000) + "Kg"
             $(".pro1").css("width",per1+"%");
         }
 
@@ -2944,9 +2944,10 @@ var requiredItemOpen = false;
                                 item.image +
                                 '" alt="' +
                                 item.name +
-                                '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
+                                '" /></div><div class="z-hotbar-item-slot-amount-name"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
+                                "</p></div>"
+                            );
                     } else {
                         $(".z-hotbar-inventory")
                             .find("[data-zhotbarslot=" + item.slot + "]")
@@ -2957,11 +2958,11 @@ var requiredItemOpen = false;
                                 item.image +
                                 '" alt="' +
                                 item.name +
-                                '" /></div><div class="z-hotbar-item-slot-amount"><p>' +
+                                '" /></div><div class="z-hotbar-item-slot-amount-name"><p>' +
                                 item.amount +
-                                '</div><div class="z-hotbar-item-slot-amount-name"><p></p></div>"');
+                                "</p></div>"
+                            );
                     }
-                    Inventory.QualityCheck(item, true, false);
                 }
             });
             $(".z-hotbar-inventory").fadeIn(150);
@@ -2975,7 +2976,7 @@ var requiredItemOpen = false;
     Inventory.UseItem = function(data) {
         $(".itembox-container").hide();
         $(".itembox-container").fadeIn(250);
-        $("#itembox-action").html("<p>Used</p>");
+        $("#itembox-action").html("<p>Utilisé</p>");
         $("#itembox-label").html("<p>" + data.item.label + "</p>");
         $("#itembox-image").html(
             '<div class="item-slot-img"><img src="images/' +
@@ -3035,7 +3036,7 @@ var requiredItemOpen = false;
                 $(".requiredItem-container").html("");
                 $.each(data.items, function(index, item) {
                     var element =
-                        '<div class="requiredItem-box"><div id="requiredItem-action">Required</div><div id="requiredItem-label"><p>' +
+                        '<div class="requiredItem-box"><div id="requiredItem-action">Requis</div><div id="requiredItem-label"><p>' +
                         item.label +
                         '</p></div><div id="requiredItem-image"><div class="item-slot-img"><img src="images/' +
                         item.image +
